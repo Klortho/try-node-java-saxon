@@ -1,0 +1,34 @@
+{
+  "name": "try-node-java-saxon",
+  "version": "0.0.1",
+  "description": "Experiments with using node-java to run Saxon HE",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "node fetch-saxon.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Maloney",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klortho/try-node-java-saxon.git"
+  },
+  "keywords": [
+    "XML",
+    "Saxon",
+    "Java"
+  ],
+  "dependencies": {
+    "java": "^0.6.0",
+    "node-java-maven": "0.0.12"
+  },
+  "java": {
+    "dependencies": [
+      {
+        "groupId": "net.sf.saxon",
+        "artifactId": "Saxon-HE",
+        "version": "9.6.0-7"
+      }
+    ]
+  }
+}
