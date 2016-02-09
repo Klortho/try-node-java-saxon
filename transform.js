@@ -8,11 +8,16 @@ java.asyncOptions = {
   promiseSuffix: undefined,   // Don't generate methods returning promises
 };
 
+var beforeTime = new Date().getTime();
+
 var mvn = require('node-java-maven');
 mvn({
     localRepository: './jars'
   },
   function(err, mvnResults) {
+    console.log('node-java-maven took ' +
+      (new Date().getTime() - beforeTime) + ' milliseconds to ' +
+      'find the jars.');
     if (err) {
       return console.error('Could not resolve maven dependencies', err);
     }

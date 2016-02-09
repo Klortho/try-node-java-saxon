@@ -31,6 +31,29 @@ npm install
 ./transform.js
 ```
 
-Using [node-java-maven](https://github.com/joeferner/node-java-maven), 
+Using [node-java-maven](https://github.com/joeferner/node-java-maven),
 it automatically fetches the SaxonHE jar from Maven Central, during
 the `npm install` (using the prepublish hook).
+
+## Questions
+
+### Resolving jar locations at runtime
+
+It bothers me a little to have this code both in the fetch-saxon.js
+script, and at the top of every script that will use the jars:
+
+```js
+var mvn = require('node-java-maven');
+mvn({
+    localRepository: './jars'
+  },
+  function(err, mvnResults) {
+    ...
+```
+
+How does it resolve the jar location exactly? The directory can be
+computed from $localRepository/$groupId/$artifactId/$version/,
+then, I'm not sure exactly how it calculates the .jar filename.
+
+Probably not a big deal. But, I should be able to specify
+`localRepository` in package.json.
